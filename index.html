@@ -41,7 +41,10 @@
                     <div class="form-group row">
                         <label for="test-cases" class="col-sm-2 col-form-label">Test Cases</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="test-cases" placeholder="Test cases code" value="{{testCases}}"></textarea>
+                            {{#testCasesList}}
+                                <textarea class="form-control" rows="3" id="test-cases" placeholder="Test cases code" value="{{this}}"></textarea>
+                            {{/testCasesList}}
+                            <button class="btn btn-secondary" onclick="addTestCase();return false;"> Add </button>
                         </div>
                     </div>
 
@@ -58,13 +61,13 @@
                             <input type="text" class="form-control" id="inputScore" value="{{score}}" disabled>
                         </div>
                     </div>
-                    <!--
+
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                             <button class="btn btn-primary" onclick="saveJson();return false;"> Convert </button>
                         </div>
                     </div>
-                    -->
+
                 </form>
             </script>
 
@@ -74,6 +77,12 @@
             <h3> Resulting JSON </h3>
             <p>  <pre id="output-json"></pre>
             </p>
+            <div class="form-group row">
+                <label for="inputFileName" class="col-sm-2 col-form-label">File Name</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="inputFileName" placeholder="no file extension">
+                </div>
+            </div>
             <button class="btn btn-primary" onclick="downloadJson(); return false;"> Download </button>
             <a id="hiddenDownloadElem" style="display:none"></a>
 
