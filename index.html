@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Builder</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="index.css" rel="stylesheet"/>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2> JSON Builder </h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3> Input Code </h3>
+            <div id="form-container"></div>
+
+            <script id="template" type="text/ractive">
+                <form>
+                    <div class="form-group row">
+                        <label for="inputLang" class="col-sm-2 col-form-label">Lang</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLang" placeholder="Python" value="{{lang}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="pre-loaded-code" class="col-sm-2 col-form-label">Code</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" id="pre-loaded-code" placeholder="Pre-loaded code" value="{{code}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="test-cases" class="col-sm-2 col-form-label">Test Cases</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" id="test-cases" placeholder="Test cases code" value="{{testCases}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="hidden-code" class="col-sm-2 col-form-label">Hidden Code</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" id="hidden-code" placeholder="Hidden code (pre-executed)" value="{{hiddenCode}}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputScore" class="col-sm-2 col-form-label">Score</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputScore" value="{{score}}" disabled>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <button class="btn btn-primary" onclick="saveJson();return false;"> Convert </button>
+                        </div>
+                    </div>
+                    -->
+                </form>
+            </script>
+
+
+        </div>
+        <div class="col-md-6">
+            <h3> Resulting JSON </h3>
+            <p>  <pre id="output-json"></pre>
+            </p>
+            <button class="btn btn-primary" onclick="downloadJson(); return false;"> Download </button>
+            <a id="hiddenDownloadElem" style="display:none"></a>
+
+        </div>
+    </div>
+
+    <script src="http://cdn.ractivejs.org/latest/ractive.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
