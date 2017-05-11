@@ -7,14 +7,20 @@
 
 })();
 
-var testCasesList = ['', ''];
+// var testCasesList = ['', ''];
+var testCaseObject = {
+    "setup": "",
+    "execute": "",
+    "passed_feedback": "",
+    "failed_feedback": ""
+};
+
+var totalTestCases = 1;
 
 var ractive = new Ractive({
-    // The `el` option can be a node, an ID, or a CSS selector.
+
     el: '#form-container',
 
-    // We could pass in a string, but for the sake of convenience
-    // we're passing the ID of the <script> tag above.
     template: '#template',
     modifyArrays: true,
 
@@ -22,7 +28,9 @@ var ractive = new Ractive({
     data: {
         lang: 'Python',
         code: '',
-        testCasesList: testCasesList,
+        testCasesList: {
+            case1: getNewTestCaseObj()
+        },
         hiddenCode: '',
         score: '0'
     }
@@ -39,8 +47,11 @@ function saveJson() {
 
 function addTestCase() {
     console.log("adding new test case");
-    testCasesList.push('');
-    // ractive.set('testCasesList', ractive.get('testCasesList').push(''));
+    // testCasesList.push('');
+    totalTestCases = totalTestCases + 1;
+    var caseString = "case"+totalTestCases;
+    ractive.set('testCasesList.'+caseString, getNewTestCaseObj());
+
     return false;
 }
 
@@ -56,6 +67,15 @@ function downloadJson() {
     downloadSimulateElem.setAttribute("href", dataStr);
     downloadSimulateElem.setAttribute("download", fileName);
     downloadSimulateElem.click();
+}
+
+function getNewTestCaseObj() {
+    return {
+        "setup": "",
+        "execute": "",
+        "passed_feedback": "",
+        "failed_feedback": ""
+    };
 }
 
 setInterval(function () {
